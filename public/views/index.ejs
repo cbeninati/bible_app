@@ -24,21 +24,22 @@
       </div>
     </div>
     <main class="container">
-      <div id="bible-version-list" class="list-container bible-list"></div>
-      <h4 class="list-heading"><span>English</span></h4>
-      <ul>
-        <% bibleVersions.forEach(version => { %>
-          <li class="bible">
-            <a href="book.html?version=<%= version.id %>&abbr=<%= version.abbreviation %>" >
-              <abbr class="bible-version-abbr" title="<%= version.name %>"><%= version.abbreviation %></abbr>
-              <span>
-                <span class="bible-version-name"><%= version.name %></span>
-                  <span class="bible-version-desc"><%= version.description %></span>
-              </span>
-            </a>
-          </li>
-        <% }) %>
-      </ul>
+      <div id="bible-version-list" class="list-container bible-list">
+        <h4 class="list-heading"><span>English</span></h4>
+        <ul>
+          <% bibleVersions.forEach(version => { %>
+            <li class="bible">
+              <a href="/book?version=<%= version.id %>&abbr=<%= version.abbreviation %>">
+                <abbr class="bible-version-abbr" title="<%= version.name %>"><%= version.abbreviation %></abbr>
+                <span>
+                  <span class="bible-version-name"><%= version.name %></span>
+                    <span class="bible-version-desc"><%= version.description %></span>
+                </span>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
     </main>
   </body>
 </html>

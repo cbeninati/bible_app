@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/main.css" rel="stylesheet" />
+    <title>Bible API Example Application</title>
+  </head>
+  <body class="index">
+    <header>
+      <div class="container">
+        <h1>
+          <a class="flex" href="/">
+            <span class="logo" title="American Bible Society">ABS</span>
+            <span>API Demo App</span>
+          </a>
+        </h1>
+      </div>
+    </header>
+    <div class="subheader">
+      <div class="container flex">
+        <div class="subheadings">
+          <h2>Viewing:</h2>
+          <h3 id="viewing"><%= abbr %></h3>
+        </div>
+      </div>
+    </div>
+    <div class="container crumbs">
+      <div id="breadcrumbs"></div>
+    </div>
+    <main class="container">
+      <h4 class="list-heading"><span>Select a Book</span></h4>
+      <div id="book-list" class="list-container">
+        <ul>
+          <% bookList.forEach(book => { %>
+            <li class="bible">
+              <a href="/chapters?version=<%= version %>&abbr=<%= abbr %>&book=<%= book.id%>"><%= book.name %></a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>

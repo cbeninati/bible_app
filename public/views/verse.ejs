@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/main.css" rel="stylesheet" />
+    <title>Bible API Example Application</title>
+  </head>
+  <body class="index">
+    <header>
+      <div class="container">
+        <h1>
+          <a class="flex" href="/">
+            <span class="logo" title="American Bible Society">ABS</span>
+            <span>API Demo App</span>
+          </a>
+        </h1>
+      </div>
+    </header>
+    <div class="subheader">
+      <div class="container flex">
+        <div class="subheadings">
+          <h2>Viewing:</h2>
+          <h3 id="viewing"></h3>
+        </div>
+      </div>
+    </div>
+    <main class="container">
+      <h4 class="list-heading"><span>Select a Verse</span></h4>
+      <div id="verse-list" class="list-container numeric-list">
+        <ol>
+          <% for (let i = 1; i <= verseCount; i++) { %>
+            <li class="grid">
+              <a class="grid-link" href="/verse-selected?version=<%= chapterData.bibleId %>&abbr=<%= %>"><%= i %></a>
+            </li>
+          <% } %>
+        </ol>
+      </div>
+      <div class="eb-container" id="chapter-text">
+        <%- contents %>
+      </div>
+    </main>
+  </body>
+  <script src="http://cdn.scripture.api.bible/fums/fumsv2.min.js"></script>
+</html>
