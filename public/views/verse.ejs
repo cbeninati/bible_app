@@ -19,7 +19,7 @@
       <div class="container flex">
         <div class="subheadings">
           <h2>Viewing:</h2>
-          <h3 id="viewing"></h3>
+          <h3 id="viewing">Chapter <%= chapterData.number %></h3>
         </div>
       </div>
     </div>
@@ -29,7 +29,9 @@
         <ol>
           <% for (let i = 1; i <= verseCount; i++) { %>
             <li class="grid">
-              <a class="grid-link" href="/verse-selected?version=<%= chapterData.bibleId %>&abbr=<%= %>"><%= i %></a>
+              <a class="grid-link" 
+              href="/verse-selected?version=<%= chapterData.bibleId %>&abbr=<%= abbr %>&verse=<%= chapterData.id%>"><%= i %>
+              </a>
             </li>
           <% } %>
         </ol>
