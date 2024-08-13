@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
   res.render('verse', {
     verseCount,
     contents,
+    abbr,
     chapterData
   })
 });

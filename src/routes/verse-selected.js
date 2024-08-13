@@ -4,13 +4,10 @@ import { getChapters } from '../controllers/api-controller.js';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  const { version, abbr, book } = req.query;
-  const chapters = await getChapters(version, book);
+  const { version, abbr, verse } = req.query;
 
-  res.render('chapter', {
-    version,
-    book,
-    chapters,
+  res.render('verse-selected', {
+    
   });
 });
 
