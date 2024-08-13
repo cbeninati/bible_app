@@ -56,7 +56,7 @@ export async function getChapters(versionID, bookID) {
         'api-key': process.env.API_KEY
       }
     });
-    
+
     return response.data.data;
   } catch (error) {
     console.error('Error fetching books:', error.message);
@@ -77,4 +77,12 @@ export async function getChapter(versionID, chapterID) {
     console.error('Error fetching books:', error.message);
     throw error;
   }
+}
+
+export async function getTranslatedVerse() {
+  
+}
+
+export async function getOriginalVerse() {
+
 }
