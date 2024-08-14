@@ -1,14 +1,19 @@
 import express from 'express';
 import { getVerse } from '../controllers/api-controller.js';
+import { getOriginalVerse } from '../utils/helper-functions.js';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  const { version, abbr, verse } = req.query;
+  const { version, abbr, book, chapter, verse } = req.query;
+  const originalVerse = await getOriginalVerse(verse, book);
   const translatedVerse = await getVerse(version, verse);
-  const originalVerse = await getVerse("5e29945cf530b0f6-01", verse);
-
+  
   res.render('verse-selected', {
+    version,
+    abbr,
+    book,
+    chapter,
     translatedVerse,
     originalVerse
   });

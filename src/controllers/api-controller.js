@@ -89,7 +89,25 @@ export async function getVerse(versionID, verseID) {
 
     return response.data.data;
   } catch (error) {
-    console.error('Error fetching books:', error.message);
-    throw error;
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.error('Error fetching books:', {
+        message: error.message,
+        status: error.response.status,
+        data: error.response.data, // This is the response data from the server
+      });
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error('Error fetching books: No response received', {
+        message: error.message,
+        request: error.request, // Useful to debug issues with the request itself
+      });
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error('Error setting up the request:', {
+        message: error.message,
+      });
+    }
   }
 }

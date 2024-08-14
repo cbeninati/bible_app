@@ -2,15 +2,25 @@
 <html>
   <head>
     <link href="css/main.css" rel="stylesheet" />
-    <title>Bible API Example Application</title>
+    <title>Bible LLM App</title>
   </head>
   <body class="index">
     <header>
       <div class="container">
+        <a href="/" class="logo" title="American Bible Society">ABS</a>
+        <div class="crumbs">
+          <div id="breadcrumbs">
+            <ul>
+              <li><a href="/book?version=<%= version %>&abbr=<%= abbr %>"><%= abbr %></a></li>
+              <li><a href="/chapter?version=<%= version %>&abbr=<%= abbr %>&book=<%= book %>"><%= book %></a></li>
+              <li><a href="/verse?version=<%= version%>&abbr=<%= abbr %>&chapter=<%= chapter %>"><%= chapter %></a></li>
+              <li><%= chapter %></li>
+            </ul>
+          </div>
+        </div>
         <h1>
           <a class="flex" href="/">
-            <span class="logo" title="American Bible Society">ABS</span>
-            <span>API Demo App</span>
+            <span>LLM Bible Reference</span>
           </a>
         </h1>
       </div>
@@ -26,11 +36,11 @@
       </div>
     </div>
     <main class="container">
-      <h2>Translated Version:</h2>
+      <h3>Translated Version:</h3>
       <div id="verse-content" class="verse-container">
         <%- translatedVerse.content %>
       </div>
-      <h2>Original Version:</h2>
+      <h3>Original Version:</h3>
       <div id="verse-content" class="verse-container">
         <%- originalVerse.content %>
       </div>

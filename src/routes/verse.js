@@ -8,11 +8,14 @@ router.get('/', async (req, res) => {
   const chapterData = await getChapter(version, chapter);
   const verseCount = Number(chapterData.verseCount);
   const contents = chapterData.content;
+  const book = chapterData.bookId;
   res.render('verse', {
+    version,
     verseCount,
     contents,
     abbr,
-    chapterData
+    chapterData,
+    book
   })
 });
 
