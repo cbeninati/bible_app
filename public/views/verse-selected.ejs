@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/main.css" rel="stylesheet" />
+    <title>Bible API Example Application</title>
+  </head>
+  <body class="index">
+    <header>
+      <div class="container">
+        <h1>
+          <a class="flex" href="/">
+            <span class="logo" title="American Bible Society">ABS</span>
+            <span>API Demo App</span>
+          </a>
+        </h1>
+      </div>
+    </header>
+    <div class="subheader">
+      <div class="container flex">
+        <div class="subheadings">
+          <h2>Viewing:</h2>
+          <h3 id="viewing"><span id="verse">
+            <%= translatedVerse.reference %>
+          </span></h3>
+        </div>
+      </div>
+    </div>
+    <main class="container">
+      <h2>Translated Version:</h2>
+      <div id="verse-content" class="verse-container">
+        <%- translatedVerse.content %>
+      </div>
+      <h2>Original Version:</h2>
+      <div id="verse-content" class="verse-container">
+        <%- originalVerse.content %>
+      </div>
+    </main>
+  </body>
+</html>

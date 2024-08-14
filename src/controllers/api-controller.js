@@ -79,10 +79,17 @@ export async function getChapter(versionID, chapterID) {
   }
 }
 
-export async function getTranslatedVerse() {
-  
-}
+export async function getVerse(versionID, verseID) {
+  try {
+    const response = await axios.get(`https://api.scripture.api.bible/v1/bibles/${versionID}/verses/${verseID}?include-chapter-numbers=false&include-verse-numbers=false`, {
+      headers: {
+        'api-key': process.env.API_KEY
+      }
+    });
 
-export async function getOriginalVerse() {
-
+    return response.data.data;
+  } catch (error) {
+    console.error('Error fetching books:', error.message);
+    throw error;
+  }
 }

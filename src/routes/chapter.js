@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
   res.render('chapter', {
     version,
     book,
+    abbr,
     chapters,
   });
 });
