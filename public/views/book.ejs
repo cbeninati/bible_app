@@ -2,15 +2,22 @@
 <html>
   <head>
     <link href="css/main.css" rel="stylesheet" />
-    <title>Bible API Example Application</title>
+    <title>Bible LLM App</title>
   </head>
   <body class="index">
     <header>
-      <div class="container">
+        <div class="container">
+        <a href="/" class="logo" title="American Bible Society">ABS</a>
+        <div class="crumbs">
+          <div id="breadcrumbs">
+            <ul>
+              <li><%= abbr %></li>
+            </ul>
+          </div>
+        </div>
         <h1>
           <a class="flex" href="/">
-            <span class="logo" title="American Bible Society">ABS</span>
-            <span>API Demo App</span>
+            <span>LLM Bible Reference</span>
           </a>
         </h1>
       </div>
@@ -22,9 +29,6 @@
           <h3 id="viewing"><%= abbr %></h3>
         </div>
       </div>
-    </div>
-    <div class="container crumbs">
-      <div id="breadcrumbs"></div>
     </div>
     <main class="container">
       <h4 class="list-heading"><span>Select a Book</span></h4>

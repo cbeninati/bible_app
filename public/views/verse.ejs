@@ -2,15 +2,24 @@
 <html>
   <head>
     <link href="css/main.css" rel="stylesheet" />
-    <title>Bible API Example Application</title>
+    <title>Bible LLM App</title>
   </head>
   <body class="index">
     <header>
       <div class="container">
+        <a href="/" class="logo" title="American Bible Society">ABS</a>
+        <div class="crumbs">
+          <div id="breadcrumbs">
+            <ul>
+              <li><a href="/book?version=<%= version %>&abbr=<%= abbr %>"><%= abbr %></a></li>
+              <li><a href="/chapter?version=<%= version %>&abbr=<%= abbr %>&book=<%= book %>"><%= book %></a></li>
+              <li><%= chapterData.number %></li>
+            </ul>
+          </div>
+        </div>
         <h1>
           <a class="flex" href="/">
-            <span class="logo" title="American Bible Society">ABS</span>
-            <span>API Demo App</span>
+            <span>LLM Bible Reference</span>
           </a>
         </h1>
       </div>
@@ -30,7 +39,7 @@
           <% for (let i = 1; i <= verseCount; i++) { %>
             <li class="grid">
               <a class="grid-link" 
-              href="/verse-selected?version=<%= chapterData.bibleId %>&abbr=<%= abbr %>&verse=<%= chapterData.id %>.<%= i %>"><%= i %>
+              href="/verse-selected?version=<%= chapterData.bibleId %>&abbr=<%= abbr %>&book=<%= book %>&chapter=<%= chapterData.number %>&verse=<%= chapterData.id %>.<%= i %>"><%= i %>
               </a>
             </li>
           <% } %>
