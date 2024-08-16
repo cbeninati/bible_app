@@ -1,5 +1,5 @@
 import express from 'express';
-import { getChapters } from '../controllers/api-controller.js';
+import { getChapters } from '../controllers/bible-api-controller.js';
 
 const router = express.Router();
 

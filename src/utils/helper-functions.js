@@ -1,4 +1,4 @@
-import { getVerse } from "../controllers/api-controller.js";
+import { getVerse } from "../controllers/bible-api-controller.js";
 
 export function inOldTestament(bookAbbr) {
   const OTBookIDs = [
@@ -31,6 +31,6 @@ export async function getOriginalVerse(verseID, bookAbbr) {
   } else {
     originalVerse = await getVerse(ntVersionID, verseID);
   }
-  
+
   return originalVerse;
 }

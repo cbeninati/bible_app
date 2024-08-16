@@ -3,13 +3,13 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const API_KEY = process.env.API_KEY;
+const BIBLE_API_KEY = process.env.BIBLE_API_KEY;
 
 export async function getBibleVersions() {
   try {
     const response = await axios.get('https://api.scripture.api.bible/v1/bibles?language=eng', {
       headers: {
-        'api-key': API_KEY
+        'api-key': BIBLE_API_KEY
       }
     });
 
@@ -34,7 +34,7 @@ export async function getBooks(bibleVersionID) {
   try {
     const response = await axios.get(`https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/books`, {
       headers: {
-        'api-key': process.env.API_KEY,
+        'api-key': BIBLE_API_KEY,
       },
     });
 
@@ -53,7 +53,7 @@ export async function getChapters(versionID, bookID) {
   try {
     const response = await axios.get(`https://api.scripture.api.bible/v1/bibles/${versionID}/books/${bookID}/chapters`, {
       headers: {
-        'api-key': process.env.API_KEY
+        'api-key': BIBLE_API_KEY
       }
     });
 
@@ -68,7 +68,7 @@ export async function getChapter(versionID, chapterID) {
   try {
     const response = await axios.get(`https://api.scripture.api.bible/v1/bibles/${versionID}/chapters/${chapterID}`, {
       headers: {
-        'api-key': process.env.API_KEY
+        'api-key': BIBLE_API_KEY
       }
     });
 
@@ -81,9 +81,9 @@ export async function getChapter(versionID, chapterID) {
 
 export async function getVerse(versionID, verseID) {
   try {
-    const response = await axios.get(`https://api.scripture.api.bible/v1/bibles/${versionID}/verses/${verseID}?include-chapter-numbers=false&include-verse-numbers=false`, {
+    const response = await axios.get(`https://api.scripture.api.bible/v1/bibles/${versionID}/verses/${verseID}?content-type=text&include-chapter-numbers=false&include-verse-numbers=false`, {
       headers: {
-        'api-key': process.env.API_KEY
+        'api-key': BIBLE_API_KEY
       }
     });
 
