@@ -13,7 +13,7 @@
             <ul>
               <li><a href="/book?version=<%= version %>&abbr=<%= abbr %>"><%= abbr %></a></li>
               <li><a href="/chapter?version=<%= version %>&abbr=<%= abbr %>&book=<%= book %>"><%= book %></a></li>
-              <li><a href="/verse?version=<%= version%>&abbr=<%= abbr %>&chapter=<%= chapter %>"><%= chapter %></a></li>
+              <li><a href="/verse?version=<%= version%>&abbr=<%= abbr %>&chapter=<%= originalVerse.chapterId %>"><%= chapter %></a></li>
               <li><%= chapter %></li>
             </ul>
           </div>
@@ -38,11 +38,17 @@
     <main class="container">
       <h3>Translated Version:</h3>
       <div id="verse-content" class="verse-container">
-        <%- translatedVerse.content %>
+        <p><%= translatedVerse.content %></p>
       </div>
       <h3>Original Version:</h3>
       <div id="verse-content" class="verse-container">
-        <%- originalVerse.content %>
+        <p><%= originalVerse.content %></p>
+      </div>
+      <h3>LLM Insights:</h3>
+      <div id="verse-content" class="verse-container">
+        <% llmTextParagraphs.forEach(paragraph => { %>
+          <p><%= paragraph %></p>
+        <% }) %>
       </div>
     </main>
   </body>
