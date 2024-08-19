@@ -1,22 +1,24 @@
 import express from "express";
 import path from "path";
+import cors from "cors";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { getBibleVersions } from "./src/controllers/bible-api-controller.js";
-import bookRouter from "./src/routes/book.js";
-import chapterRouter from "./src/routes/chapter.js";
-import verseRouter from "./src/routes/verse.js";
-import verseSelectedRouter from "./src/routes/verse-selected.js";
+import { getBibleVersions } from './controllers/bible-api-controller.js';
+import bookRouter from "./routes/book.js";
+import chapterRouter from "./routes/chapter.js";
+import verseRouter from "./routes/verse.js";
+import verseSelectedRouter from "./routes/verse-selected.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT;
+app.use(cors());
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'public', 'views'));
+app.set('views', path.join(__dirname, '..', 'client', 'views'));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 app.use('/book', bookRouter);
 app.use('/chapters', chapterRouter);
 app.use('/verse', verseRouter);
@@ -28,6 +30,6 @@ app.listen(PORT, () => {
 
 app.get('/', async (req, res) => {
   const bibleVersions = await getBibleVersions();
-  res.render('index', { bibleVersions });
+  res.json(bibleVersions);
 });
 
