@@ -1,15 +1,15 @@
 import Subheader from "../components/Subheader";
-import Biblelist from "../components/Biblelist";
+import Bookslist from "../components/Bookslist";
 
-function Home() {
+function Books() {
   return (
     <>
       <Subheader />
       <main class="container">
-        <Biblelist />
+        <Bookslist />
       </main>
     </>
   );
 }
 
-export default Home;
+export default Books;
