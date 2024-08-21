@@ -7,11 +7,11 @@ router.get('/', async (req, res) => {
   const { version, abbr, book } = req.query;
   const chapters = await getChapters(version, book);
 
-  res.render('chapter', {
+  res.json({
     version,
     book,
     abbr,
-    chapters,
+    chapters
   });
 });
 

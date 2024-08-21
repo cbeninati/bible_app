@@ -5,8 +5,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { getBibleVersions } from './controllers/bible-api-controller.js';
 import bookRouter from "./routes/books.js";
-import chapterRouter from "./routes/chapter.js";
-import verseRouter from "./routes/verse.js";
+import chapterRouter from "./routes/chapters.js";
+import verseRouter from "./routes/verses.js";
 import verseSelectedRouter from "./routes/verse-selected.js";
 
 const __filename = fileURLToPath(import.meta.url);

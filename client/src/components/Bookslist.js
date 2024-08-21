@@ -9,7 +9,7 @@ function Bookslist() {
       .then(response => response.json())
       .then(json => setBooksData(json))
       .catch(error => console.error('Error fetching data:', error));
-  }, []);
+  }, [location.pathname, location.search]);
   
   return (
     <>
@@ -19,7 +19,7 @@ function Bookslist() {
         <ul>
           {booksData.list.map((book, index) => (
             <li className="bible" key={index}>
-              <Link to={`/chapters?version=${booksData.version}&abbr=${booksData.abbr}&book=${book.id}"`}>{book.name}
+              <Link to={`/chapters?version=${booksData.version}&abbr=${booksData.abbr}&book=${book.id}`}>{book.name}
               </Link>
             </li>
           ))}

@@ -4,7 +4,7 @@ import Biblelist from "../components/Biblelist";
 function Home() {
   return (
     <>
-      <Subheader />
+      <Subheader selection="Translation"/>
       <main class="container">
         <Biblelist />
       </main>
