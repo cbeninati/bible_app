@@ -5,7 +5,7 @@ function Chapters() {
   return (
     <>
       <Subheader selection="Chapter"/>
-      <main class="container">
+      <main className="container">
         <Chapterslist />
       </main>
     </>

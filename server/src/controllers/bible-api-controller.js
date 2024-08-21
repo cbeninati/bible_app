@@ -66,12 +66,12 @@ export async function getChapters(versionID, bookID) {
 
 export async function getChapter(versionID, chapterID) {
   try {
-    const response = await axios.get(`https://api.scripture.api.bible/v1/bibles/${versionID}/chapters/${chapterID}`, {
+    const response = await axios.get(`https://api.scripture.api.bible/v1/bibles/${versionID}/chapters/${chapterID}?content-type=text`, {
       headers: {
         'api-key': BIBLE_API_KEY
       }
     });
-
+    console.log("new: ", response.data.data);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching books:', error.message);

@@ -13,8 +13,8 @@ function Bookslist() {
   
   return (
     <>
-      <h4 class="list-heading"><span>Select a Book:</span></h4>
-      <div id="book-list" class="list-container">
+      <h4 className="list-heading"><span>Select a Book</span></h4>
+      <div id="book-list" className="list-container">
      {booksData ? (
         <ul>
           {booksData.list.map((book, index) => (

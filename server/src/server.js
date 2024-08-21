@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, '..', 'client', 'views'));
 app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 app.use('/books', bookRouter);
 app.use('/chapters', chapterRouter);
-app.use('/verse', verseRouter);
+app.use('/verses', verseRouter);
 app.use('/verse-selected', verseSelectedRouter);
 
 app.listen(PORT, () => {

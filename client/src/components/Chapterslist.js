@@ -13,13 +13,13 @@ function Chapterslist() {
   
   return (
     <>
-      <h4 class="list-heading"><span>Select a Chapter</span></h4>
-      <div id="chapter-list" class="list-container numeric-list">
+      <h4 className="list-heading"><span>Select a Chapter</span></h4>
+      <div id="chapter-list" className="list-container numeric-list">
       {chapterData ? (
         <ol>
           {chapterData.chapters.map((chapter, index) => (
-            <li class="grid" key={index}>
-              <Link class="grid-link" to={`/verses?version=${chapterData.version}&abbr=${chapterData.abbr}&chapter=${chapter.id}`}>
+            <li className="grid" key={index}>
+              <Link className="grid-link" to={`/verses?version=${chapterData.version}&abbr=${chapterData.abbr}&chapter=${chapter.id}`}>
               {chapter.number}
               </Link>
             </li>
