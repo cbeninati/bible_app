@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function Verse() {
   const location = useLocation();
@@ -15,47 +15,32 @@ function Verse() {
     <>
       <h3>Translated Version:</h3>
       <div id="verse-content" class="verse-container">
-        <p>{verseData.translatedVerse.content}</p>
+        {verseData ? (
+          <p>{verseData.translatedVerse.content}</p>
+        ) : (
+          <p>...loading</p>
+        )}
       </div>
       <h3>Original Version:</h3>
       <div id="verse-content" class="verse-container">
-        <p>{verseData.originalVerse.content}</p>
-      </div>
-      {/* <h4 className="list-heading"><span>Select a Chapter</span></h4>
-      <div id="chapter-list" className="list-container numeric-list">
-      {chapterData ? (
-        <ol>
-          {chapterData.chapters.map((chapter, index) => (
-            <li className="grid" key={index}>
-              <Link className="grid-link" to={`/verses?version=${chapterData.version}&abbr=${chapterData.abbr}&chapter=${chapter.id}`}>
-              {chapter.number}
-              </Link>
-            </li>
-          ))}
-        </ol>
+        {verseData ? (
+          <p>{verseData.originalVerse.content}</p>
         ) : (
-          <p>Loading...</p>
+          <p>...loading</p>
         )}
-      </div> */}
+      </div>
+      <h3>LLM Insights:</h3>
+        {verseData ? (
+          <div>
+          {verseData.llmTextParagraphs.map((paragraph, index) => (
+            <p>{paragraph}</p>
+          ))}
+          </div>
+        ): (
+          <p>... Loading</p>
+        )}
     </>
   );
 }
 
 export default Verse;
-
-
-
-// <h3>Translated Version:</h3>
-// <div id="verse-content" class="verse-container">
-//   <p><%= translatedVerse.content %></p>
-// </div>
-// <h3>Original Version:</h3>
-// <div id="verse-content" class="verse-container">
-//   <p><%= originalVerse.content %></p>
-// </div>
-// <h3>LLM Insights:</h3>
-// <div id="verse-content" class="verse-container">
-//   <% llmTextParagraphs.forEach(paragraph => { %>
-//     <p><%= paragraph %></p>
-//   <% }) %>
-// </div>

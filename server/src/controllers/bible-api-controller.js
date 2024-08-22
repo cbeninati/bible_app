@@ -68,6 +68,7 @@ export async function getBooks(bibleVersionID) {
         message: error.message,
         status: error.response.status,
         data: error.response.data,
+        config: error.response.config
       });
     } else if (error.request) {
       console.error('Error fetching books: No response received', {

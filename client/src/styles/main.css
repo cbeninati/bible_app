@@ -362,3 +362,12 @@ body.basic_index #select-prompt, body.basic_verse-selected #select-prompt, body.
   background: #31ACFF;
   color: #fff;
 }
+
+.footer {
+  background-color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

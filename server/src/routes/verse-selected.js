@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
   const llmObject = await getGroqChatCompletion(translatedVerse.reference, originalVerse.content, translatedVerse.content);
   const llmText = llmObject.choices[0]?.message?.content || "";
   const llmTextParagraphs = llmText.split("\n");
-  
-  res.render('verse-selected', {
+
+  res.json({
     version,
     abbr,
     book,
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
     translatedVerse,
     originalVerse,
     llmTextParagraphs,
-  });
+  })
 });
 
 export default router;

@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -8,6 +7,7 @@ import Books from './pages/Books';
 import Chapters from './pages/Chapters';
 import Verses from './pages/Verses';
 import VerseSelected from './pages/VerseSelected';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Route path="/verses" element={ <Verses />} />
         <Route path="/verse-selected" element={ <VerseSelected />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
