@@ -7,10 +7,10 @@ router.get('/', async (req, res) => {
   const { version, abbr } = req.query;
   const bookList = await getBooks(version);
 
-  res.render('book', {
-    version,
-    abbr,
-    bookList,
+  res.json({
+    version: version,
+    abbr: abbr,
+    list: bookList
   });
 });
 

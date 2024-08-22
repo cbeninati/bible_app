@@ -93,7 +93,7 @@ header .logo {
   overflow: hidden;
   width: 2.75rem;
   height: 2.75rem;
-  background: #027CFF url("../img/logo.png") center no-repeat;
+  background: #027CFF url("../assets/logo.png") center no-repeat;
   background-size: 22px auto;
 }
 header h1 {
@@ -361,4 +361,13 @@ body.basic_index #select-prompt, body.basic_verse-selected #select-prompt, body.
 .list-container.numeric-list li a:hover {
   background: #31ACFF;
   color: #fff;
+}
+
+.footer {
+  background-color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }

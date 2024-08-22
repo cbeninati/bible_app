@@ -34,3 +34,9 @@ export async function getOriginalVerse(verseID, bookAbbr) {
 
   return originalVerse;
 }
+
+export function formatChapter(text) {
+  const paragraphs = text.split("¶");
+  return paragraphs
+}
+
