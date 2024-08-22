@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import he from 'he';
 import ChapterText from './ChapterText';
 
 function Verseslist() {

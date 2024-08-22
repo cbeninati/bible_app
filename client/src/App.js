@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Books from './pages/Books';
 import Chapters from './pages/Chapters';
 import Verses from './pages/Verses';
+import VerseSelected from './pages/VerseSelected';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/books" element={ <Books />} />
         <Route path="/chapters" element={ <Chapters />} />
         <Route path="/verses" element={ <Verses />} />
+        <Route path="/verse-selected" element={ <VerseSelected />} />
       </Routes>
     </Router>
   );
