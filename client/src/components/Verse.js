@@ -14,7 +14,7 @@ function Verse() {
   return (
     <>
       <h3>Translated Version:</h3>
-      <div id="verse-content" class="verse-container">
+      <div id="verse-content" className="verse-container">
         {verseData ? (
           <p>{verseData.translatedVerse.content}</p>
         ) : (
@@ -22,7 +22,7 @@ function Verse() {
         )}
       </div>
       <h3>Original Version:</h3>
-      <div id="verse-content" class="verse-container">
+      <div id="verse-content" className="verse-container">
         {verseData ? (
           <p>{verseData.originalVerse.content}</p>
         ) : (
@@ -33,7 +33,7 @@ function Verse() {
         {verseData ? (
           <div>
           {verseData.llmTextParagraphs.map((paragraph, index) => (
-            <p>{paragraph}</p>
+            <p key={index}>{paragraph}</p>
           ))}
           </div>
         ): (
