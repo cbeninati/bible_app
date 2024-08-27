@@ -7,7 +7,7 @@ function Verseslist() {
   const [verseData, setVerseData] = useState(null);
   
   useEffect(() => {
-    fetch(`http://localhost:8080${location.pathname}${location.search}`)
+    fetch(`http://localhost:4000${location.pathname}${location.search}`)
       .then(response => response.json())
       .then(json => {
         setVerseData(json);

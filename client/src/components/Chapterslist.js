@@ -5,7 +5,7 @@ function Chapterslist() {
   const location = useLocation();
   const [chapterData, setChapterData] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:8080${location.pathname}${location.search}`)
+    fetch(`http://localhost:4000${location.pathname}${location.search}`)
       .then(response => response.json())
       .then(json => setChapterData(json))
       .catch(error => console.error('Error fetching data:', error));

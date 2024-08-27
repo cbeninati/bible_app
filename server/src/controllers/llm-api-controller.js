@@ -31,7 +31,7 @@ export async function getGroqChatCompletion(verseReference, originalVerse, trans
     temperature: 0.75,
     max_tokens: 1024,
     top_p: 1,
-    stream: false,
+    stream: true,
   });
 }
 

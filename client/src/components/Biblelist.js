@@ -5,7 +5,7 @@ function Biblelist() {
   const [bibles, setBibles] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8080/')
+    fetch('http://localhost:4000/')
       .then(response => response.json())
       .then(data => setBibles(data))
       .catch(error => console.error('Error fetching data:', error));

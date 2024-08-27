@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import LlmOutput from './LlmOutput';
 
 function Verse() {
   const location = useLocation();
   const [verseData, setVerseData] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:8080${location.pathname}${location.search}`)
+    fetch(`http://localhost:4000${location.pathname}${location.search}`)
       .then(response => response.json())
       .then(json => setVerseData(json))
       .catch(error => console.error('Error fetching data:', error));
@@ -16,7 +17,8 @@ function Verse() {
       <h3>Translated Version:</h3>
       <div id="verse-content" className="verse-container">
         {verseData ? (
-          <p>{verseData.translatedVerse.content}</p>
+          <p>TEST</p>
+          // <p>{verseData.translatedVerse.content}</p>
         ) : (
           <p>...loading</p>
         )}
@@ -24,21 +26,14 @@ function Verse() {
       <h3>Original Version:</h3>
       <div id="verse-content" className="verse-container">
         {verseData ? (
-          <p>{verseData.originalVerse.content}</p>
+          <p>TESTING</p>
+          // <p>{verseData.originalVerse.content}</p>
         ) : (
           <p>...loading</p>
         )}
       </div>
-      <h3>LLM Insights:</h3>
-        {verseData ? (
-          <div>
-          {verseData.llmTextParagraphs.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-          </div>
-        ): (
-          <p>... Loading</p>
-        )}
+      {/* <h3>LLM Insights:</h3> */}
+        <LlmOutput query={location.search} />
     </>
   );
 }
