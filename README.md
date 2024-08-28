@@ -3,9 +3,16 @@ Navigate to the client directory and run `npm start` to start the React server.
 
 Run `npm run dev` in the server directory to start the backend server
 
-### Future tasks:
+# Future tasks:
+## Backend:
 - Configure LLM API calls to best suit use case (temperature, max tokens, top P)
+
+## Frontend:
 - Add dropdown to select verse range rather than just 1 verse
+- Cache chapter data
+- Styling
+  - Make it look like ours (css and html layouts)
+  - Come up w name
 - ~~Look into streaming LLM output to screen rather than rendering once fully generated (do we need to switch to React?)~~
   - Generally would want better server side rendering with somewhat lengthy API call/responses
 

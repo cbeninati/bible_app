@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
-  res.flushHeaders(); // Flush the headers to establish SSE with client
+  res.flushHeaders();
 
    try {
         const stream = await getGroqChatStream(translatedVerse.reference, originalVerse.content, translatedVerse.content);
