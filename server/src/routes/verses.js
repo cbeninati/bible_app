@@ -6,7 +6,6 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const { version, abbr, chapter } = req.query;
   const chapterData = await getChapter(version, chapter);
-  console.log("data: ", chapterData)
   const content = chapterData.content;
   const paragraphs = formatChapter(content);
   const book = chapterData.bookId;

@@ -14,25 +14,28 @@ function Verse() {
   
   return (
     <>
-      <h3>Translated Version:</h3>
-      <div id="verse-content" className="verse-container">
-        {verseData ? (
-          <p>TEST</p>
-          // <p>{verseData.translatedVerse.content}</p>
-        ) : (
-          <p>...loading</p>
-        )}
-      </div>
-      <h3>Original Version:</h3>
-      <div id="verse-content" className="verse-container">
-        {verseData ? (
-          <p>TESTING</p>
-          // <p>{verseData.originalVerse.content}</p>
-        ) : (
-          <p>...loading</p>
-        )}
-      </div>
-      {/* <h3>LLM Insights:</h3> */}
+      <div style={{ display: 'flex' }}>
+        <div className="verse-block" style={{ flex: 1, padding: '10px' }}>
+          <h3>Translated Version:</h3>
+          <div id="verse-content" className="verse-container">
+            {verseData ? (
+              <p>{verseData.translatedVerse.content}</p>
+            ) : (
+              <p>...loading</p>
+            )}
+          </div>
+        </div>
+        <div className="verse-block" style={{ flex: 1, padding: '10px' }}>
+          <h3>Original Version:</h3>
+          <div id="verse-content" className="verse-container">
+            {verseData ? (
+              <p>{verseData.originalVerse.content}</p>
+            ) : (
+              <p>...loading</p>
+            )}
+          </div>
+        </div>
+      </div>   
         <LlmOutput query={location.search} />
     </>
   );
