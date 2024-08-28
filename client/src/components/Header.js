@@ -1,12 +1,13 @@
 import React from 'react';
+import TopNav from './TopNav';
 
-function Header() {
+function Header({ path, queryString }) {
   return (
     <header>
       <div className="container">
         <a href="/" className="logo" title="American Bible Society">ABS</a>
         <div className="crumbs">
-          <div id="breadcrumbs"></div>
+          <TopNav path={path} queryString={queryString}/>
         </div>
         <h1>
           <a className="flex" href="/">

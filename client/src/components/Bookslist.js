@@ -5,7 +5,7 @@ function Bookslist() {
   const location = useLocation();
   const [booksData, setBooksData] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:8080${location.pathname}${location.search}`)
+    fetch(`http://localhost:4000${location.pathname}${location.search}`)
       .then(response => response.json())
       .then(json => setBooksData(json))
       .catch(error => console.error('Error fetching data:', error));
