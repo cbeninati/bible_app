@@ -6,7 +6,7 @@ Run `npm run dev` in the server directory to start the backend server
 ### Future tasks:
 - Configure LLM API calls to best suit use case (temperature, max tokens, top P)
 - Add dropdown to select verse range rather than just 1 verse
-- Look into streaming LLM output to screen rather than rendering once fully generated (do we need to switch to React?)
+- ~~Look into streaming LLM output to screen rather than rendering once fully generated (do we need to switch to React?)~~
   - Generally would want better server side rendering with somewhat lengthy API call/responses
 
 ### Other notes:
