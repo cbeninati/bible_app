@@ -4,10 +4,11 @@ import { formatChapter } from '../utils/helper-functions.js';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
+  console.log("Request received from /verses!");
   const { version, abbr, chapter } = req.query;
   const chapterData = await getChapter(version, chapter);
-  const content = chapterData.content;
-  const paragraphs = formatChapter(content);
+  const chapterContent = chapterData.content;
+  const paragraphs = formatChapter(chapterContent);
   const book = chapterData.bookId;
   const verseCount = Number(chapterData.verseCount);
   const verseArray = [];
@@ -17,6 +18,7 @@ router.get('/', async (req, res) => {
     version,
     verseArray,
     paragraphs,
+    chapterContent,
     abbr,
     chapterData,
     book,

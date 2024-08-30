@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom';
 
 function Home() {
   const path = useLocation().pathname;
-  const params = useLocation().search;
   return (
     <>
       <Header path={path} />

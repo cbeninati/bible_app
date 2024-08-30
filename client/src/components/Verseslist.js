@@ -1,45 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import ChapterText from './ChapterText';
 
 function Verseslist() {
   const location = useLocation();
-  const [verseData, setVerseData] = useState(null);
+  const queryString = location.search;
+  const params = new URLSearchParams(queryString);
+  const paramsObj = Object.fromEntries(params.entries());
+  const fetchVerses = async () => {
+    const response = await fetch(`http://localhost:4000${location.pathname}${location.search}`);
+    return response.json();
+  };
   
-  useEffect(() => {
-    fetch(`http://localhost:4000${location.pathname}${location.search}`)
-      .then(response => response.json())
-      .then(json => {
-        setVerseData(json);
-      })
-      .catch(error => console.error('Error fetching data:', error));
-  }, [location.pathname, location.search]);
-  
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: [paramsObj.chapter],
+    queryFn: fetchVerses,
+    staleTime: 600000,
+    cacheTime: 300000,
+  });
+
+  console.log('data: ', data)
+  if (isPending) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
     <>
       <h4 className="list-heading"><span>Select a Verse</span></h4>
       <div id="verse-list" className="list-container numeric-list">
-      {verseData ? (
         <ol>
-          {verseData.verseArray.map(verseNum => (
+          {data.verseArray.map(verseNum => (
             <li className="grid" key={verseNum}>
-              <Link className="grid-link" to={`/verse-selected?version=${verseData.version}&abbr=${verseData.abbr}&book=${verseData.book}&chapter=${verseData.chapterData.number}&verse=${verseData.chapterData.id}.${verseNum}`}>
+              <Link className="grid-link" to={`/verse-selected?version=${data.version}&abbr=${data.abbr}&book=${data.book}&chapter=${data.chapterData.number}&verse=${data.chapterData.id}.${verseNum}`}>
               {verseNum}
               </Link>
             </li>
           ))}
         </ol>
-        ) : (
-          <p>Loading...</p>
-        )}
       </div>
-      {verseData ? (
-        <div>
-          <ChapterText paragraphs={verseData.paragraphs}/>
-        </div>
-      ): (
-        <p>Loading...</p>
-      )}
+      <div>
+        <ChapterText paragraphs={data.paragraphs}/>
+      </div>
     </>
   );
 }
