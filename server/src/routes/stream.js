@@ -1,7 +1,7 @@
 import express from "express";
 import { getGroqChatStream } from '../controllers/llm-api-controller.js';
 import { getVerse } from '../controllers/bible-api-controller.js';
-import { getOriginalVerse } from '../utils/helper-functions.js';
+import { getOriginalVerse } from '../utils/helpers.js';
 
 const router = express();
 

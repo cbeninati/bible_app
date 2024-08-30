@@ -4,7 +4,7 @@ import cors from "cors";
 import http from 'http';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { getBibleVersions } from './controllers/bible-api-controller.js';
+import { englishTranslationsSubset } from './utils/helpers.js';
 import bookRouter from "./routes/books.js";
 import chapterRouter from "./routes/chapters.js";
 import verseRouter from "./routes/verses.js";
@@ -33,8 +33,8 @@ app.use('/verse-selected', verseSelectedRouter);
 app.use('/stream', streamRouter);
 
 app.get('/', async (req, res) => {
-  const bibleVersions = await getBibleVersions();
-  res.json(bibleVersions);
+  // const bibleVersions = await getBibleVersions();
+  res.json(englishTranslationsSubset);
 });
 
 // Start server

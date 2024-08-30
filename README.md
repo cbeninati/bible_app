@@ -22,3 +22,8 @@ The environment variables currently are `PORT`, `BIBLE_API_KEY`, `HEBREW_BIBLE_I
 The model used is llama-3.1-70b-versatile from the Groq API. Need to do more research on if this is best option (1 hour of research suggests yes).
 
 The frontend is now in React, no more EJS.
+
+## Milestones/ updates:
+8/29: incorporated `react-query` to handle data caching. When chapter text is rendered at `/verses`, the API response is cached with the chapter_id as the cache key. When a new translation is selected the cache will be cleared.
+
+`react-query` dev tools is rendered in `index.js` to help with debugging.
