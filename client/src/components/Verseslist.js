@@ -6,8 +6,7 @@ import { formatChapter } from '../utils/helpers';
 
 function Verseslist() {
   const location = useLocation();
-  const queryString = location.search;
-  const params = new URLSearchParams(queryString);
+  const params = new URLSearchParams(location.search);
   const paramsObj = Object.fromEntries(params.entries());
   const fetchVerses = async () => {
     const response = await fetch(`http://localhost:4000${location.pathname}${location.search}`);
