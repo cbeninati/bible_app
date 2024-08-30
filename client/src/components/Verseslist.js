@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import ChapterText from './ChapterText';
+import { formatChapter } from '../utils/helpers';
 
 function Verseslist() {
   const location = useLocation();
@@ -13,14 +14,13 @@ function Verseslist() {
     return response.json();
   };
   
-  const { isPending, isError, data, error } = useQuery({
+  const { isPending, data, error } = useQuery({
     queryKey: [paramsObj.chapter],
     queryFn: fetchVerses,
     staleTime: 600000,
     cacheTime: 300000,
   });
 
-  console.log('data: ', data)
   if (isPending) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
@@ -39,7 +39,7 @@ function Verseslist() {
         </ol>
       </div>
       <div>
-        <ChapterText paragraphs={data.paragraphs}/>
+        <ChapterText paragraphs={formatChapter(data.chapterContent)}/>
       </div>
     </>
   );
