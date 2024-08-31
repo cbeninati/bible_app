@@ -6,6 +6,11 @@ Run `npm run dev` in the server directory to start the backend server
 # Future tasks:
 ## Backend:
 - Configure LLM API calls to best suit use case (temperature, max tokens, top P)
+- Improve prompt engineering to not include unnecessary/redundant answer portions. Maybe focus on getting just bullet points
+- (Idea) It would be cool if there was an option for users to select from multiple choices on what they want insight on from the LLM. Some options might be:
+  - Language: this is current config and focuses on the meaning of the words/phrases in the original greek or hebrew
+  - Relation: this could be how the passage relates to the rest of the Bible. It might include any references that exist to other portions of scripture or how key words are used elsewhere in scripture. Would need to flesh this out more.
+  - Cultural context: this might give insight to the cultural context in which that passage exists. The characteristics of the society, what was important to those people, what lens was it viewed through, etc.
 
 ## Frontend:
 - Add dropdown to select verse range rather than just 1 verse

@@ -390,3 +390,11 @@ body.basic_index #select-prompt, body.basic_verse-selected #select-prompt, body.
   list-style-type: none;
   padding: 0;
 }
+
+form {
+  text-align: center;
+}
+
+form label {
+  color: #E2E0C8;
+}
