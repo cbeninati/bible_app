@@ -11,7 +11,7 @@ function Header({ path, queryString }) {
         </div>
         <h1>
           <a className="flex" href="/">
-            <span>LLM Bible Reference</span>
+            <span>Bibliogos</span>
           </a>
         </h1>
       </div>

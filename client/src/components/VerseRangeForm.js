@@ -45,6 +45,9 @@ function VerseRangeForm() {
     console.log("Submitted value:", startValue);
   };
 
+  if (isPending) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
    <>
     <form onSubmit={handleSubmit}>

@@ -1,0 +1,28 @@
+{
+  "name": "bible_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm start --prefix client\" \"npm run dev --prefix server\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.3",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "groq-sdk": "^0.5.0",
+    "openai": "^4.55.7",
+    "path": "^0.12.7",
+    "url": "^0.11.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.4"
+  }
+}
