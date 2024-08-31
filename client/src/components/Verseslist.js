@@ -9,7 +9,7 @@ function Verseslist() {
   const params = new URLSearchParams(location.search);
   const paramsObj = Object.fromEntries(params.entries());
   const fetchVerses = async () => {
-    const response = await fetch(`http://localhost:4000${location.pathname}${location.search}`);
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}${location.pathname}${location.search}`);
     return response.json();
   };
   

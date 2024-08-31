@@ -5,7 +5,7 @@ function Biblelist() {
   const [bibles, setBibles] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/')
+    fetch(process.env.REACT_APP_SERVER_URL)
       .then(response => response.json())
       .then(data => setBibles(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -15,7 +15,7 @@ function Biblelist() {
     <div id="bible-version-list" className="list-container bible-list">
       <h4 className="list-heading"><span>English</span></h4>
       {bibles ? (
-        <ul>
+        <ul className="three-columns-list">
           {bibles.map((bible, index) => (
             <li className="bible" key={index}>
               <Link to={`/books?version=${bible.id}&abbr=${bible.abbreviation}`}>

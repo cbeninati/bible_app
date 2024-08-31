@@ -78,6 +78,7 @@ ul, ol {
 }
 
 header {
+  background: #264653;
   position: relative;
   z-index: 99;
   padding: 0.5em 0;
@@ -106,18 +107,18 @@ header .logo {
 }
 header h1 {
   text-align: right;
-  background: #fff;
+  background: #264653;
 }
 header h1 a {
   font-family: "Libre Baskerville", serif;
   font-weight: 406000;
-  color: #264653;
+  color: #E2E0C8;
   font-size: 1.5rem;
   line-height: 2.75rem;
 }
 
 .subheader {
-  background: #F6FBFF;
+  background: #264653;
   padding: 2.125rem 0;
   position: relative;
   margin-bottom: 3.125rem;
@@ -129,13 +130,15 @@ header h1 a {
   margin-right: 2rem;
 }
 .subheader .subheadings h2 {
+  color: #E2E0C8;
   font-size: 1rem;
   line-height: 1.3125;
-  font-weight: 700;
+  font-weight: 100;
   text-transform: uppercase;
   margin-bottom: 0.375em;
 }
 .subheader .subheadings h3 {
+  color: #E2E0C8;
   font-family: "Libre Baskerville", serif;
   font-size: 1.75rem;
   line-height: 2.25rem;
@@ -155,6 +158,7 @@ header h1 a {
   clear: both;
 }
 .crumbs li {
+  color: #E2E0C8;
   float: left;
 }
 .crumbs li:before {
@@ -358,23 +362,31 @@ body.basic_index #select-prompt, body.basic_verse-selected #select-prompt, body.
 .list-container.numeric-list li a {
   display: inline-block;
   padding: 0 0.25em;
-  border: 1px solid lightgray;
+  border: 1px solid darkgrey;
   white-space: nowrap;
   font-size: 1rem;
   line-height: 3.75rem;
   min-width: 3.75rem;
   text-align: center;
+  border-radius: 0.5rem;
 }
 .list-container.numeric-list li a:hover {
-  background: #31ACFF;
+  background: #E76F51;
   color: #fff;
 }
 
 .footer {
-  background-color: white;
   padding: 20px 0;
   text-align: center;
   position: relative;
   bottom: 0;
   width: 100%;
+}
+
+.three-columns-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  list-style-type: none;
+  padding: 0;
 }

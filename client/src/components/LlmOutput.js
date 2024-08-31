@@ -5,7 +5,7 @@ function LlmOutput({ query }) {
   const [messages, setMessages] = useState(['']);
 
   useEffect(() => {
-    const eventSource = new EventSource(`http://localhost:4000/stream${query}`);
+    const eventSource = new EventSource(`${process.env.REACT_APP_SERVER_URL}/stream${query}`);
 
     eventSource.onmessage = (event) => {
       try {
