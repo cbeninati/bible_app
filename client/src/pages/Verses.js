@@ -9,7 +9,7 @@ function Verses() {
   return (
     <>
       <Header path={path} queryString={params} />
-      <Subheader selection="Verse"/>
+      <Subheader selection="Verse" showVerseRangeForm={true}/>
       <main className="container">
         <Verseslist />
       </main>

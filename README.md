@@ -27,3 +27,8 @@ The frontend is now in React, no more EJS.
 8/29: incorporated `react-query` to handle data caching. When chapter text is rendered at `/verses`, the API response is cached with the chapter_id as the cache key. When a new translation is selected the cache will be cleared.
 
 `react-query` dev tools is rendered in `index.js` to help with debugging.
+
+8/30: No more API call at `/`, a subset of english translations saved in the backend is rendered
+
+8/31: New CSS styles; work in progress. 
+Frontend now uses an environment variable for the server URL, so create a .env file with `REACT_APP_SERVER_URL="http://localhost:4000"` in /client
