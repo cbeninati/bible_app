@@ -1,30 +1,74 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function TopNav({ path, queryString }) {
   const [navData, setNavData] = useState([]);
 
   useEffect(() => {
     function getBreadCrumbs() {
-      if (!queryString) {return []};
+      if (!queryString) return [];
       const paramsStr = new URLSearchParams(queryString.slice(1));
       const params = Object.fromEntries(paramsStr.entries());
 
-      switch(path) {
+      switch (path) {
         case "/":
           return [];
         case "/books":
-          return [params.abbr];
+          return [
+            {
+              label: params.abbr,
+              path: `/books?version=${params.version}&abbr=${params.abbr}`,
+            },
+          ];
         case "/chapters":
-          return [params.abbr, params.book];
+          return [
+            {
+              label: params.abbr,
+              path: `/books?version=${params.version}&abbr=${params.abbr}`,
+            },
+            {
+              label: params.book,
+              path: `/chapters?version=${params.version}&abbr=${params.abbr}&book=${params.book}`,
+            },
+          ];
         case "/verses":
-          const chapterArr = params.chapter.split('.');
+          const chapterArr = params.chapter.split(".");
           const book = chapterArr[0];
           const chapter = chapterArr[1];
-          return [params.abbr, book, chapter];
+          return [
+            {
+              label: params.abbr,
+              path: `/books?version=${params.version}&abbr=${params.abbr}`,
+            },
+            {
+              label: book,
+              path: `/chapters?version=${params.version}&abbr=${params.abbr}&book=${book}`,
+            },
+            {
+              label: chapter,
+              path: `/verses?version=${params.version}&abbr=${params.abbr}&book=${book}&chapter=${params.chapter}`,
+            },
+          ];
         case "/verse-selected":
-          const verseArr = params.verse.split('.');
-          return [params.abbr, verseArr[0], verseArr[1], verseArr[2]];
+          const verseArr = params.verse.split(".");
+          return [
+            {
+              label: params.abbr,
+              path: `/books?version=${params.version}&abbr=${params.abbr}`,
+            },
+            {
+              label: verseArr[0],
+              path: `/chapters?version=${params.version}&abbr=${params.abbr}&book=${verseArr[0]}`,
+            },
+            {
+              label: verseArr[1],
+              path: `/verses?version=${params.version}&abbr=${params.abbr}&book=${verseArr[0]}&chapter=${verseArr[0]}.${verseArr[1]}`,
+            },
+            {
+              label: verseArr[2],
+              path: `/verse-selected?version=${params.version}&abbr=${params.abbr}&verse=${params.verse}`,
+            },
+          ];
         default:
           return [];
       }
@@ -39,10 +83,9 @@ function TopNav({ path, queryString }) {
         {navData.map((crumb, index) => (
           <li key={index}>
             {index === navData.length - 1 ? (
-              crumb
-            ): (
-              <Link to="/">{crumb}
-              </Link>
+              crumb.label
+            ) : (
+              <Link to={crumb.path}>{crumb.label}</Link>
             )}
           </li>
         ))}
