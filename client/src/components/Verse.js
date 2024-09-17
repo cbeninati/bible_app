@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import LlmOutput from './LlmOutput';
+import { getVerseRange } from '../utils/helpers';
 
 function Verse() {
+  const [translatedPassage, setTranslatedPassage] = useState(null);
+  const [originalPassage, setOriginalPassage] = useState('');
   const location = useLocation();
-  const [verseData, setVerseData] = useState(null);
+  const queryClient = useQueryClient();
+  const params = new URLSearchParams(location.search);
+  const paramsObj = Object.fromEntries(params.entries());
+
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_SERVER_URL}${location.pathname}${location.search}`)
-      .then(response => response.json())
-      .then(json => setVerseData(json))
-      .catch(error => console.error('Error fetching data:', error));
-  }, [location.pathname, location.search]);
+    const cachedData = queryClient.getQueryData([paramsObj.chapter]);
+    const translatedChapter = cachedData.chapterData.content;
+    const originalChapter = cachedData.chapterDataOriginal.content
+    setTranslatedPassage(getVerseRange(translatedChapter, paramsObj.start, paramsObj.end));
+    setOriginalPassage(getVerseRange(originalChapter, paramsObj.start, paramsObj.end));
+  }, [queryClient, paramsObj.chapter])
+
+
+  if (!translatedPassage) return <div>Loading...</div>;
+  // if (error) return <div>Error: {error.message}</div>;
   
   return (
     <>
@@ -18,25 +30,17 @@ function Verse() {
         <div className="verse-block" style={{ flex: 1, padding: '10px' }}>
           <h3>Translated Version:</h3>
           <div id="verse-content" className="verse-container">
-            {verseData ? (
-              <p>{verseData.translatedVerse.content}</p>
-            ) : (
-              <p>...loading</p>
-            )}
+              <p>{translatedPassage}</p>
           </div>
         </div>
         <div className="verse-block" style={{ flex: 1, padding: '10px' }}>
           <h3>Original Version:</h3>
-          <div id="verse-content" className="verse-container">
-            {verseData ? (
-              <p>{verseData.originalVerse.content}</p>
-            ) : (
-              <p>...loading</p>
-            )}
+          <div id="verse-content" className="verse-container">            
+            <p>{originalPassage}</p>
           </div>
         </div>
       </div>   
-        <LlmOutput query={location.search} />
+        <LlmOutput query={location.search} original={originalPassage} translated={translatedPassage} />
     </>
   );
 }

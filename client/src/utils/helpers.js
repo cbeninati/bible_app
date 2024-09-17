@@ -4,6 +4,9 @@ export function formatChapter(text) {
   return paragraphs;
 }
 
-export function getVerseCount(data) {
-  
+export function getVerseRange(chapterText, start, end) {
+  const verseArray = chapterText.split(/\[\d+\]/).filter(item => item !== '');
+  const range = verseArray.splice(Number(start) - 1, Number(end) - 1);
+  return range.join('')
 }
+

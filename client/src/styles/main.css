@@ -362,7 +362,7 @@ body.basic_index #select-prompt, body.basic_verse-selected #select-prompt, body.
 .list-container.numeric-list li a {
   display: inline-block;
   padding: 0 0.25em;
-  border: 1px solid darkgrey;
+  border: 2px solid darkgrey;
   white-space: nowrap;
   font-size: 1rem;
   line-height: 3.75rem;
@@ -370,6 +370,60 @@ body.basic_index #select-prompt, body.basic_verse-selected #select-prompt, body.
   text-align: center;
   border-radius: 0.5rem;
 }
+.range-selected {
+  display: inline-block;
+  padding: 0 0.25em;
+  border: 2px solid darkgrey;
+  white-space: nowrap;
+  font-size: 1rem;
+  line-height: 3.75rem;
+  min-width: 3.75rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  background: #E76F51;
+  color: #fff;
+}
+.range-not-selected {
+  display: inline-block;
+  padding: 0 0.25em;
+  border: 2px solid darkgrey;
+  white-space: nowrap;
+  font-size: 1rem;
+  line-height: 3.75rem;
+  min-width: 3.75rem;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+.range-not-selected:hover {
+  border: 2px solid #E76F51;
+  transition: border 0.3s ease;
+  cursor: pointer;
+}
+/*
+Color pallete: charcoal (#264653), persian green (#2A9D8F), saffron (#E9C46A), sandy brown (#F4A261), burnt sienna (#E76F51)
+*/
+button.submit-range {
+  color: black;
+  background-color: #E9C46A;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  margin: 0 0.3em 0.3em 0;
+  padding: 0 0.25em;
+  border: 2px solid darkgrey;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 3.75rem;
+  min-width: 6rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+button.submit-range:hover {
+  background-color: #F4A261;
+}
+
 .list-container.numeric-list li a:hover {
   background: #E76F51;
   color: #fff;

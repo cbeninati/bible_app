@@ -5,7 +5,7 @@ dotenv.config();
 const groqApiKey = process.env.GROQ_API_KEY;
 const groq = new Groq({ apiKey: groqApiKey });
 
-export async function getGroqChatStream(verseReference, originalVerse, translatedVerse) {
+export async function getGroqChatStream(originalPassage, translatedPassage) {
   return groq.chat.completions.create({
     messages: [
       {
@@ -16,9 +16,8 @@ export async function getGroqChatStream(verseReference, originalVerse, translate
         role: "user",
         content:
           `I want to understand the nuances about the following biblical text that are lost in translation from the original language to English.\n
-          The verse is ${verseReference}.\n
-          Here is the english version: ${translatedVerse}\n
-          Here is the verse in the original language: ${originalVerse}`,
+          Here is the english version: ${translatedPassage}\n
+          Here is the verse in the original language: ${originalPassage}`,
       },
     ],
 
