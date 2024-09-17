@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 function VerseRangeForm() {
   const location = useLocation();
@@ -9,7 +10,7 @@ function VerseRangeForm() {
 
   const [startValue, setStartValue] = useState('');
   const [endValue, setEndValue] = useState('');
-  const [verseArray, setVerseArray] = useState([]);
+  const [apiRes, setApiRes] = useState({});
 
   const fetchVerses = async () => {
     const response = await fetch(`${process.env.REACT_APP_SERVER_URL}${location.pathname}${location.search}`);
@@ -25,24 +26,39 @@ function VerseRangeForm() {
 
   useEffect(() => {
     if (data) {
-      setVerseArray(data.verseArray);
+      setApiRes(data);
     }
   }, [data])
 
   const handleStartChange = (event) => {
-    if (event.target.value > endValue) setEndValue(event.target.value);
-    setStartValue(event.target.value);
+    if (Number(event.target.value) > endValue) setEndValue(Number(event.target.value));
+    setStartValue(Number(event.target.value));
   };
 
   const handleEndChange = (event) => {
-    if (event.target.value < startValue) setStartValue(event.target.value)
-    setEndValue(event.target.value);
+    if (Number(event.target.value) < startValue) setStartValue(Number(event.target.value))
+    setEndValue(Number(event.target.value));
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // call api with verse range included.
-    console.log("Submitted value:", startValue);
+    const translatedChapter = apiRes.chapterData.content;
+    const originalChapter = apiRes.chapterDataOriginal.content;
+    const data = {
+      translatedChapter,
+      originalChapter,
+      startValue,
+      endValue,
+      chapterAbbr: paramsObj.chapter
+    }
+
+    axios.post(`${process.env.REACT_APP_SERVER_URL}${location.pathname}`, data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   };
 
   if (isPending) return <div>Loading...</div>;
@@ -54,14 +70,14 @@ function VerseRangeForm() {
       <label htmlFor="dropdown">Select a verse range:<br/></label>
       <select id="dropdown" value={startValue} onChange={handleStartChange}>
         <option value="" disabled>Select an option</option>
-        {verseArray.map(verseNum => (
+        {data.verseArray.map(verseNum => (
           <option key={verseNum} value={verseNum}>{verseNum}</option>
         ))}
       </select>
       <label htmlFor="dropdown"></label>
       <select id="dropdown" value={endValue} onChange={handleEndChange}>
         <option value="" disabled>Select an option</option>
-        {verseArray.map(verseNum => (
+        {data.verseArray.map(verseNum => (
           <option key={verseNum} value={verseNum}>{verseNum}</option>
         ))}
       </select>
