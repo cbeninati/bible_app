@@ -452,3 +452,12 @@ form {
 form label {
   color: #E2E0C8;
 }
+
+.separator {
+  border: none;
+  border-top: 2px dotted black;
+  margin: 20px 0;             /* Add space around the line */
+  width: 90%;                 /* Set the width of the line */
+  margin-left: auto;
+  margin-right: auto;         /* Center the line horizontally */
+}

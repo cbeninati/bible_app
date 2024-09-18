@@ -18,7 +18,7 @@ function Verse() {
     const originalChapter = cachedData.chapterDataOriginal.content
     setTranslatedPassage(getVerseRange(translatedChapter, paramsObj.start, paramsObj.end));
     setOriginalPassage(getVerseRange(originalChapter, paramsObj.start, paramsObj.end));
-  }, [queryClient, paramsObj.chapter])
+  }, [queryClient, paramsObj.chapter, paramsObj.end, paramsObj.start])
 
 
   if (!translatedPassage) return <div>Loading...</div>;
@@ -28,18 +28,19 @@ function Verse() {
     <>
       <div style={{ display: 'flex' }}>
         <div className="verse-block" style={{ flex: 1, padding: '10px' }}>
-          <h3>Translated Version:</h3>
+          <h3>{paramsObj.abbr}:</h3>
           <div id="verse-content" className="verse-container">
               <p>{translatedPassage}</p>
           </div>
         </div>
         <div className="verse-block" style={{ flex: 1, padding: '10px' }}>
-          <h3>Original Version:</h3>
+          <h3>Original:</h3>
           <div id="verse-content" className="verse-container">            
             <p>{originalPassage}</p>
           </div>
         </div>
       </div>   
+      <hr class="separator"/>
         <LlmOutput query={location.search} original={originalPassage} translated={translatedPassage} />
     </>
   );

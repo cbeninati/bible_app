@@ -4,6 +4,15 @@ import dotenv from "dotenv";
 dotenv.config();
 const groqApiKey = process.env.GROQ_API_KEY;
 const groq = new Groq({ apiKey: groqApiKey });
+/*
+• Idiomatic expressions and cultural references unique to the ancient world.
+
+• Grammatical subtleties, like verb tenses, moods, and voices.
+
+• Connotations of specific words or phrases that may not be immediately apparent in the English translation.
+
+• Historical and literary context that may shed light on the passage's intended meaning.
+*/
 
 export async function getGroqChatStream(reference, translatedPassage, originalPassage) {
   return groq.chat.completions.create({

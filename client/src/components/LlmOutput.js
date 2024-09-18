@@ -46,11 +46,11 @@ function LlmOutput({ query, original, translated }) {
       .catch((error) => {
         console.error('Error during fetch:', error);
       });
-  }, [query, original, translated]);
+  }, [query, original, translated, paramsObj.chapter]);
 
   return (
     <div>
-      <h1>LLM Output</h1>
+      <h2></h2>
       <ul>
         {messages.map((msg, index) => (
           <li key={index}>
