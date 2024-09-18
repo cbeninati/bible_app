@@ -4,9 +4,14 @@ export function formatChapter(text) {
   return paragraphs;
 }
 
+// cleanup this logic
 export function getVerseRange(chapterText, start, end) {
-  const verseArray = chapterText.split(/\[\d+\]/).filter(item => item !== '');
-  const range = verseArray.splice(Number(start) - 1, Number(end) - 1);
-  return range.join('')
+  const arr = chapterText.split(/(\[\d+\]\s*)/g).filter(Boolean);
+  const verseArr = arr.map((item, index) => {
+    if (item.includes('[')) {
+      return `${item}${arr[index+1]}`
+    }
+  })
+  const range = verseArr.filter(Boolean).slice(Number(start-1), Number(end));
+  return range.join('');
 }
-

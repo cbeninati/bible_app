@@ -32,9 +32,7 @@ function TopNav({ path, queryString }) {
             },
           ];
         case "/verses":
-          const chapterArr = params.chapter.split(".");
-          const book = chapterArr[0];
-          const chapter = chapterArr[1];
+          const [book, chapter] = params.chapter.split(".");
           return [
             {
               label: params.abbr,
@@ -50,23 +48,24 @@ function TopNav({ path, queryString }) {
             },
           ];
         case "/verse-selected":
-          const verseArr = params.verse.split(".");
+          // book, chapter 
+          const arr = params.chapter.split('.');
+          // const verseArr = params.verse.split(".");
           return [
             {
               label: params.abbr,
               path: `/books?version=${params.version}&abbr=${params.abbr}`,
             },
             {
-              label: verseArr[0],
-              path: `/chapters?version=${params.version}&abbr=${params.abbr}&book=${verseArr[0]}`,
+              label: arr[0],
+              path: `/chapters?version=${params.version}&abbr=${params.abbr}&book=${arr[0]}`,
             },
             {
-              label: verseArr[1],
-              path: `/verses?version=${params.version}&abbr=${params.abbr}&book=${verseArr[0]}&chapter=${verseArr[0]}.${verseArr[1]}`,
+              label: arr[1],
+              path: `/verses?version=${params.version}&abbr=${params.abbr}&book=${arr[0]}&chapter=${params.chapter}`,
             },
             {
-              label: verseArr[2],
-              path: `/verse-selected?version=${params.version}&abbr=${params.abbr}&verse=${params.verse}`,
+              label: `${params.start}-${params.end}`,
             },
           ];
         default:

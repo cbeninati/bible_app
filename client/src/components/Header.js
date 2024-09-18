@@ -6,9 +6,9 @@ function Header({ path, queryString }) {
     <header>
       <div className="container">
         <a href="/" className="logo" title="American Bible Society">ABS</a>
-        {/* <div className="crumbs">
+        <div className="crumbs">
           <TopNav path={path} queryString={queryString}/>
-        </div> */}
+        </div>
         <h1>
           <a className="flex" href="/">
             <span>Bibliogos</span>

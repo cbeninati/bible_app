@@ -1,16 +1,19 @@
 import express from "express";
 import bodyParser from 'body-parser';
 import { getGroqChatStream } from '../controllers/llm-api-controller.js';
+import { bookIds } from '../utils/helpers.js';
 
 const router = express();
 router.use(bodyParser.json());
 let sessionData = {};
 
 router.post('/init', async (req, res) => {
-  const { original, translated } = req.body;
+  const { original, translated, chapter } = req.body;
+  const [abbr, chapterNum] = chapter.split('.');
+  const book = bookIds[abbr];
   sessionData['originalPassage'] = original;
   sessionData['translatedPassage'] = translated;
-  console.log(sessionData);
+  sessionData['reference'] = `${book} chapter ${chapterNum}`;
   res.json({ message: 'Initialization successful' });
 })
 
@@ -21,7 +24,7 @@ router.get('/', async (req, res) => {
   res.flushHeaders();
 
    try {
-        const stream = await getGroqChatStream(sessionData.translatedPassage, sessionData.originalPassage);
+        const stream = await getGroqChatStream(sessionData.reference, sessionData.translatedPassage, sessionData.originalPassage);
         for await (const chunk of stream) {
           const data = {message: chunk.choices[0]?.delta?.content || ""};
           res.write(`data: ${JSON.stringify(data)}\n\n`);
