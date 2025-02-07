@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 
    try {
         const { stream, onData } = getChatStream({
-          serviceName: "aisdk",
+          serviceName: "groq",
         });
 
         const streamResponse = await stream(
